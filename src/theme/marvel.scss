@@ -1,0 +1,133 @@
+$vp-color: #e10078;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #fafafa;
+}
+
+#root {
+  font-family: "Myriad Set Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 5px 10px;
+
+  background-color: $vp-color;
+  color: rgb(255, 255, 255);
+  font-family: "SF Pro Text","Myriad Set Pro","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-size: 14px;
+
+  .marvel-logo {
+    font-size: 24px;
+  }
+}
+
+.character-section {
+  overflow: auto;
+  margin: 50px auto 0 auto;
+
+  > * {
+    margin: auto;
+  }
+}
+
+.character-message {
+  text-align: center;
+}
+
+.character-tile {
+  display: block;
+  width: 240px;
+  background-color: #f4f4f4;
+
+  > a, img {
+    display: block;
+    margin: auto;
+
+    &:hover {
+      background-color: $vp-color;
+    }
+  }
+
+  > .character-tile-name {
+    font-size: 0.9em;
+    display: block;
+    line-height: 40px;
+
+    color: $vp-color;
+    background-color: #ffffff;
+  }
+
+  > .character-tile-links {
+    border-color: #f4f4f4;
+    border-width: 1px 0;
+    border-style: solid;
+    background-color: #ffffff;
+    line-height: 28px;
+
+    > a {
+      &:before {
+        content: "\2713";
+      }
+
+      font-size: 0.8em;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #9b9b9b;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.character-details {
+  padding: 0 50px;
+
+  display: table;
+  > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  > img {
+    width: 216px;
+    height: 324px;
+  }
+
+  .character-details-desc {
+    padding-left: 10px;
+
+    > .character-details-name {
+      font-size: 1.1em;
+      color: $vp-color;
+    }
+  }
+}
+
+.character-collection {
+  margin-top: 20px;
+
+  > .character-collection-name {
+    font-weight: bold;
+  }
+
+  > .character-collection-items {
+    margin-top: 10px;
+    display: table;
+
+    > * {
+      display: table-row;
+    }
+  }
+}
