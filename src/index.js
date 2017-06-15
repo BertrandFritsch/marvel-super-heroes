@@ -13,10 +13,10 @@ import App from './app';
  */
 const render = Component =>
   ReactDOM.render(
-  <AppContainer>
-    <Component />
-  </AppContainer>, document.getElementById('root')
-);
+    <AppContainer>
+      <Component />
+    </AppContainer>, document.getElementById('root')
+  );
 
 render(App);
 

@@ -52,11 +52,11 @@ export default class CharacterTiles extends React.PureComponent<void, Props, voi
 
     return (
       <Grid
-          columnWidth={ 250 }
-          duration={ 800 }
-          gutterHeight={ 10 }
-          gutterWidth={ 10 }
-          itemHeight={ 280 }
+        columnWidth={ 250 }
+        duration={ 800 }
+        gutterHeight={ 10 }
+        gutterWidth={ 10 }
+        itemHeight={ 280 }
       >
         {
           this.props.items.map(item => (
