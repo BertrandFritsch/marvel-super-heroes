@@ -14,8 +14,6 @@ let plugins = [
 ];
 
 let entries = [
-  'babel-polyfill'
-  // Babel-polyfill will emulate a full ES2015 environment. Necessary for IE.
 ];
 
 if (developmentEnv) {
@@ -47,19 +45,31 @@ if (developmentEnv) {
 let config = {
   devtool: productionEnv ? 'cheap-source-map' : 'eval',
   entry: entries.concat([
-    './src/index.js'
+    './src/index.tsx'
   ]),
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: 'bundle-[hash].js',
     publicPath: '/'
   },
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [ '.ts', '.tsx', '.js', '.json' ]
+  },
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: [
+          'awesome-typescript-loader'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        enforce: 'pre',
         test: /\.js$/,
         use: [
-          'babel-loader'
+          'source-map-loader'
         ],
         exclude: /node_modules/
       },
@@ -86,6 +96,16 @@ let config = {
       }
     ]
   },
+
+  // When importing a module whose path matches one of the following, just
+  // assume a corresponding global variable exists and use that instead.
+  // This is important because it allows us to avoid bundling all of our
+  // dependencies, which allows browsers to cache those libraries between builds.
+  // externals: {
+  //   React: 'React',
+  //   ReactDOM: 'ReactDOM'
+  // },
+
   plugins: plugins
 };
 

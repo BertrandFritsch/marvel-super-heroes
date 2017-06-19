@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharacterTile should render correctly 1`] = `
+<CharacterTile
+  item={
+    Object {
+      "comics": Object {
+        "items": Array [],
+      },
+      "description": "desc 1",
+      "id": "id1",
+      "name": "name1",
+      "series": Object {
+        "items": Array [],
+      },
+      "thumbnail": "http://.../standard_xlarge.jpg",
+      "thumbnail_details": "http://.../portrait_incredible.jpg",
+      "urls": Array [
+        Object {
+          "type": "details",
+          "url": "http://...",
+        },
+      ],
+    }
+  }
+  onTileDetailsRequested={[Function]}
+>
+  <div
+    className="character-tile"
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      <img
+        src="http://.../standard_xlarge.jpg"
+      />
+    </a>
+    <span
+      className="character-tile-name"
+    >
+      name1
+    </span>
+    <div
+      className="character-tile-links"
+    >
+      <a
+        href="http://..."
+      >
+        details
+      </a>
+    </div>
+  </div>
+</CharacterTile>
+`;
