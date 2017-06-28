@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface Props {
 
@@ -15,6 +15,6 @@ export default function CharacterMessage(props: Props) {
   const { message } = props;
 
   return (
-    <p className="character-message">{ message }</p>
+    <p className='character-message'>{ message }</p>
   );
 }

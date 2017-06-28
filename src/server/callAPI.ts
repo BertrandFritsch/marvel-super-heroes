@@ -1,6 +1,6 @@
-import { delay } from "redux-saga";
-import { apply, call, race } from "redux-saga/effects";
-import "whatwg-fetch";
+import { delay } from 'redux-saga';
+import { apply, call, race } from 'redux-saga/effects';
+import 'whatwg-fetch';
 
 // number of times the API call will be retried in case of failure and delays between each call
 const RETRY_DELAYS = [ 1000, 3000 ];
@@ -10,17 +10,17 @@ const CALL_TIMEOUT = 15000;
 
 const defaultCallAPIOptions = {
   headers: {
-    Accept: "application/json"
+    Accept: 'application/json'
   },
-  method: "GET"
+  method: 'GET'
 };
 
 /**
  * Whether the network call succeeded or failed
  */
 export const enum CallAPIResultType {
-  SUCCESS = "SUCCESS",
-  ERROR = "ERROR",
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR',
 }
 
 export type CallAPIResult<T> =
@@ -89,10 +89,10 @@ export default function* callAPI<T>(url: string, opts: RequestInit = defaultCall
       // timeout
       return {
         type: CallAPIResultType.ERROR,
-        error: new Error("The API call timed out.")
+        error: new Error('The API call timed out.')
       };
     }
   }
 
-  throw new Error("Should never reach this line!");
+  throw new Error('Should never reach this line!');
 }

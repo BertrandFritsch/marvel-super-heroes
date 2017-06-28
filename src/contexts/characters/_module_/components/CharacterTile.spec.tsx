@@ -1,14 +1,14 @@
-import { mount } from "enzyme";
-import * as React from "react";
-import CharacterTile from "./CharacterTile";
+import { mount } from 'enzyme';
+import * as React from 'react';
+import CharacterTile from './CharacterTile';
 
-describe("CharacterTile", () => {
+describe('CharacterTile', () => {
   const character = {
-    id: "id1",
-    name: "name1",
-    description: "desc 1",
-    thumbnail: "http://.../standard_xlarge.jpg",
-    thumbnail_details: "http://.../portrait_incredible.jpg",
+    id: 'id1',
+    name: 'name1',
+    description: 'desc 1',
+    thumbnail: 'http://.../standard_xlarge.jpg',
+    thumbnail_details: 'http://.../portrait_incredible.jpg',
     comics: {
       items: []
     },
@@ -17,13 +17,13 @@ describe("CharacterTile", () => {
     },
     urls: [
       {
-        type: "details",
-        url: "http://..."
+        type: 'details',
+        url: 'http://...'
       },
     ],
   };
 
-  it("should render correctly", () => {
+  it('should render correctly', () => {
     const props = {
       item: character,
       onTileDetailsRequested: () => {}
@@ -36,7 +36,7 @@ describe("CharacterTile", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should notify about the click on the tile", () => {
+  it('should notify about the click on the tile', () => {
     const props = {
       item: character,
       onTileDetailsRequested: jest.fn()
@@ -46,7 +46,7 @@ describe("CharacterTile", () => {
       <CharacterTile { ...props } />
     );
 
-    component.find("a").at(0).simulate("click", {});
+    component.find('a').at(0).simulate('click', {});
     expect(props.onTileDetailsRequested).toBeCalledWith(props.item);
   });
 });

@@ -1,26 +1,29 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { AppContainer } from "react-hot-loader";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
-import "./theme/marvel.scss";
+import './theme/marvel.scss';
 
-import App from "./app";
+import App from './app';
+import store from './createStore';
 
 /**
  * Entry point of the Application
  */
-const render = (Component: typeof App) =>
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>, document.getElementById("root")
-  );
-
-render(App);
+ReactDOM.render(
+  <AppContainer>
+    <App store={ store }/>
+  </AppContainer>, document.getElementById('root')
+);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept("./app", () => {
-    render(App);
+  module.hot.accept('./app', () => {
+    const App = require('./app').default;
+    ReactDOM.render(
+      <AppContainer>
+        <App store={ store }/>
+      </AppContainer>, document.getElementById('root')
+    );
   });
 }

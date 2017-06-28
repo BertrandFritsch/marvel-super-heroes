@@ -60,9 +60,10 @@ exports[`CharacterViewContainer should render correctly 1`] = `
                   layout={[Function]}
                   lengthUnit="px"
                 >
-                  <TransitionGroup
+                  <ReactTransitionGroupPlus
                     childFactory={[Function]}
                     component="div"
+                    deferLeavingComponentRemoval={false}
                     style={
                       Object {
                         "height": "-10px",
@@ -70,6 +71,7 @@ exports[`CharacterViewContainer should render correctly 1`] = `
                         "width": "1030px",
                       }
                     }
+                    transitionMode="simultaneous"
                   >
                     <div
                       style={
@@ -80,7 +82,7 @@ exports[`CharacterViewContainer should render correctly 1`] = `
                         }
                       }
                     />
-                  </TransitionGroup>
+                  </ReactTransitionGroupPlus>
                 </_class>
               </_class>
             </CharacterTiles>
@@ -320,9 +322,10 @@ exports[`CharacterViewContainer should render the tiles view 1`] = `
                   layout={[Function]}
                   lengthUnit="px"
                 >
-                  <TransitionGroup
+                  <ReactTransitionGroupPlus
                     childFactory={[Function]}
                     component="div"
+                    deferLeavingComponentRemoval={false}
                     style={
                       Object {
                         "height": "280px",
@@ -330,6 +333,7 @@ exports[`CharacterViewContainer should render the tiles view 1`] = `
                         "width": "1030px",
                       }
                     }
+                    transitionMode="simultaneous"
                   >
                     <div
                       style={
@@ -474,7 +478,7 @@ exports[`CharacterViewContainer should render the tiles view 1`] = `
                         </div>
                       </_class>
                     </div>
-                  </TransitionGroup>
+                  </ReactTransitionGroupPlus>
                 </_class>
               </_class>
             </CharacterTiles>

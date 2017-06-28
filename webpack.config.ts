@@ -1,11 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import * as path from 'path';
+import * as webpack from 'webpack';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const productionEnv = process.env.NODE_ENV === 'production';
 const developmentEnv = !productionEnv;
 
-let plugins = [
+let config: webpack.Configuration = {};
+
+config.entry = [];
+config.plugins = [
   new HtmlWebpackPlugin({
     template: 'index.html',
     inject: 'body',
@@ -13,65 +16,84 @@ let plugins = [
   })
 ];
 
-let entries = [
-];
-
 if (developmentEnv) {
   const WebpackNotifierPlugin = require('webpack-notifier');
-  plugins = plugins.concat([
-    new WebpackNotifierPlugin({ alwaysNotify: true, title: 'Marvel Super Heroes App' }),
 
-    new webpack.HotModuleReplacementPlugin(),
-    // enable HMR globally
+  // add development-specific properties
+  config = {
+    ...config,
+    plugins: [
+      ...config.plugins,
+      new WebpackNotifierPlugin({ alwaysNotify: true, title: 'Marvel Super Heroes App' }),
 
-    new webpack.NamedModulesPlugin()
-    // prints more readable module names in the browser console on HMR updates
-  ]);
+      // enable HMR globally
+      new webpack.HotModuleReplacementPlugin(),
 
-  entries = entries.concat([
-    'react-hot-loader/patch',
-    // activate HMR for React
+      // prints more readable module names in the browser console on HMR updates
+      new webpack.NamedModulesPlugin()
+    ],
 
-    'webpack-dev-server/client?http://localhost:8080',
-    // bundle the client for webpack-dev-server
-    // and connect to the provided endpoint
+    entry: [
+      // activate HMR for React
+      'react-hot-loader/patch'
+    ],
 
-    'webpack/hot/only-dev-server'
-    // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
-  ]);
+    devServer: {
+      hot: true
+    },
+
+    devtool: 'cheap-module-source-map'
+  };
 }
 
-let config = {
-  devtool: productionEnv ? 'cheap-source-map' : 'eval',
-  entry: entries.concat([
-    './src/index.tsx'
-  ]),
+else {
+  // add production-specific properties
+  config = {
+    ...config,
+    devtool: 'cheap-source-map'
+  };
+}
+
+// add common properties
+config = {
+  ...config,
+
+  entry:
+    Array.isArray(config.entry)
+      ? [
+        ...config.entry,
+        './src/index.tsx'
+      ]
+      : './src/index.tsx',
+
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: 'bundle-[hash].js',
     publicPath: '/'
   },
+
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [ '.ts', '.tsx', '.js', '.json' ]
   },
+
   module: {
     rules: [
+      // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
       {
         test: /\.tsx?$/,
-        use: [
+        loaders: [
+          'react-hot-loader/webpack',
           'awesome-typescript-loader'
         ],
-        exclude: /node_modules/
+        exclude: path.resolve(__dirname, 'node_modules'),
+        include: path.resolve(__dirname, 'src')
       },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
         enforce: 'pre',
         test: /\.js$/,
-        use: [
-          'source-map-loader'
-        ],
-        exclude: /node_modules/
+        loader: 'source-map-loader'
       },
       {
         /**
@@ -89,34 +111,23 @@ let config = {
             options: {
               hash: 'sha512',
               digest: 'hex',
-              name: 'img-[name]-[hash].[ext]'
+              name: 'assets/[name]-[hash].[ext]'
             }
           }
         ]
       }
     ]
-  },
+  }
 
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
+  // To use it, add script includes into index.html
   // externals: {
   //   React: 'React',
   //   ReactDOM: 'ReactDOM'
   // },
-
-  plugins: plugins
 };
 
-if (developmentEnv) {
-  Object.assign(config, {
-    devServer: {
-      public: 'localhost:8080',
-      hot: true,
-      inline: true
-    }
-  });
-}
-
-module.exports = config;
+export default config;

@@ -1,6 +1,6 @@
-import { connect } from "react-redux";
-import { State } from "../reducers";
-import CharacterDetails from "./CharacterDetails";
+import { connect } from 'react-redux';
+import { State } from '../reducers';
+import CharacterDetails from './CharacterDetails';
 
 export default connect(
   (state: { characters: State }) => ({

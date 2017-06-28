@@ -1,10 +1,10 @@
-import { call, put, take } from "redux-saga/effects";
-import callAPI, { CallAPIResultType } from "../../../server/callAPI";
-import ActionTypes from "./actionTypes";
-import sagas, { loadCharacters, navigation } from "./sagas";
+import { call, put, take } from 'redux-saga/effects';
+import callAPI, { CallAPIResultType } from '../../../server/callAPI';
+import ActionTypes from './actionTypes';
+import sagas, { loadCharacters, navigation } from './sagas';
 
-describe("characters sagas", () => {
-  it("should start up the sagas", () => {
+describe('characters sagas', () => {
+  it('should start up the sagas', () => {
     const gen = sagas();
 
     expect(gen.next().value).toEqual([
@@ -16,22 +16,22 @@ describe("characters sagas", () => {
     expect(gen.next()).toEqual({ value: undefined, done: true });
   });
 
-  describe("navigation", () => {
+  describe('navigation', () => {
 
-    const CHARACTER_TILES_PAGE = "CHARACTER_TILES";
+    const CHARACTER_TILES_PAGE = 'CHARACTER_TILES';
 
-    it("should initialize the navigation history", () => {
+    it('should initialize the navigation history', () => {
       const gen = navigation();
 
       // Initialize the navigation history
-      expect(gen.next().value).toEqual(call([ window.history, "replaceState" ], CHARACTER_TILES_PAGE, ""));
+      expect(gen.next().value).toEqual(call([ window.history, 'replaceState' ], CHARACTER_TILES_PAGE, ''));
     });
 
-    it("should ignore unknown navigation events", () => {
+    it('should ignore unknown navigation events', () => {
       const gen = navigation();
 
       // Initialize the navigation history
-      expect(gen.next().value).toEqual(call([ window.history, "replaceState" ], CHARACTER_TILES_PAGE, ""));
+      expect(gen.next().value).toEqual(call([ window.history, 'replaceState' ], CHARACTER_TILES_PAGE, ''));
 
       // wait for a navigation event
       expect(gen.next().value).toEqual(take(ActionTypes.NAVIGATION_REQUESTED));
@@ -42,11 +42,11 @@ describe("characters sagas", () => {
       expect(gen.next(action).value).toEqual(take(ActionTypes.NAVIGATION_REQUESTED));
     });
 
-    it("should reset the character details", () => {
+    it('should reset the character details', () => {
       const gen = navigation();
 
       // Initialize the navigation history
-      expect(gen.next().value).toEqual(call([ window.history, "replaceState" ], CHARACTER_TILES_PAGE, ""));
+      expect(gen.next().value).toEqual(call([ window.history, 'replaceState' ], CHARACTER_TILES_PAGE, ''));
 
       // wait for a navigation event
       expect(gen.next().value).toEqual(take(ActionTypes.NAVIGATION_REQUESTED));
@@ -61,8 +61,8 @@ describe("characters sagas", () => {
     });
   });
 
-  describe("loadCharacters", () => {
-    it("should load the characters", () => {
+  describe('loadCharacters', () => {
+    it('should load the characters', () => {
       const gen = loadCharacters();
 
       // wait until the view has been loaded
@@ -71,7 +71,7 @@ describe("characters sagas", () => {
       // notify about the loading of the items
       expect(gen.next().value).toEqual(put({ type: ActionTypes.ITEMS_LOADING }));
 
-      const URI = "http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768";
+      const URI = 'http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
       // call the API
       expect(gen.next().value).toEqual(call(callAPI, URI));
@@ -79,16 +79,16 @@ describe("characters sagas", () => {
       const data = {
         results: [
           {
-            id: "id1",
-            name: "name1",
+            id: 'id1',
+            name: 'name1',
             thumbnail: {
-              extension: "jpg",
-              path: "http://..."
+              extension: 'jpg',
+              path: 'http://...'
             },
             urls: [
               {
-                type: "details",
-                url: "http://..."
+                type: 'details',
+                url: 'http://...'
               },
             ],
           },
@@ -97,14 +97,14 @@ describe("characters sagas", () => {
 
       const items = [
         {
-          id: "id1",
-          name: "name1",
-          thumbnail: "http://.../standard_xlarge.jpg",
-          thumbnail_details: "http://.../portrait_incredible.jpg",
+          id: 'id1',
+          name: 'name1',
+          thumbnail: 'http://.../standard_xlarge.jpg',
+          thumbnail_details: 'http://.../portrait_incredible.jpg',
           urls: [
             {
-              type: "details",
-              url: "http://..."
+              type: 'details',
+              url: 'http://...'
             },
           ],
         },
@@ -121,7 +121,7 @@ describe("characters sagas", () => {
       expect(gen.next()).toEqual({ value: undefined, done: true });
     });
 
-    it("should dispatch errors", () => {
+    it('should dispatch errors', () => {
       const gen = loadCharacters();
 
       // wait until the view has been loaded
@@ -130,7 +130,7 @@ describe("characters sagas", () => {
       // notify about the loading of the items
       expect(gen.next().value).toEqual(put({ type: ActionTypes.ITEMS_LOADING }));
 
-      const URI = "http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768";
+      const URI = 'http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
       // call the API
       expect(gen.next().value).toEqual(call(callAPI, URI));

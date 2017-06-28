@@ -1,17 +1,17 @@
-import { connect } from "react-redux";
-import ActionTypes from "../actionTypes";
-import { Dispatch, State } from "../reducers";
-import CharacterDetails from "./CharacterDetailsContainer";
-import CharacterTiles from "./CharacterTilesContainer";
-import CharacterView from "./CharacterView";
+import { connect } from 'react-redux';
+import ActionTypes, { Dispatch } from '../actionTypes';
+import { CharacterState, State } from '../reducers';
+import CharacterDetails from './CharacterDetailsContainer';
+import CharacterTiles from './CharacterTilesContainer';
+import CharacterView from './CharacterView';
 
 const tilesViewProps = {
-  title: "Liste des super héros",
+  title: 'Liste des super héros',
   component: CharacterTiles
 };
 
 const detailsViewProps = {
-  title: "Fiche d\'identité",
+  title: 'Fiche d\'identité',
   component: CharacterDetails
 };
 
@@ -21,7 +21,7 @@ const detailsViewProps = {
  *  - the character tiles otherwise
  */
 export default connect(
-  (state: { characters: State }) => state.characters.selectedItem ? detailsViewProps : tilesViewProps,
+  (state: CharacterState) => state.characters.selectedItem ? detailsViewProps : tilesViewProps,
   (dispatch: Dispatch<{ characters: State }>) => ({
     onNavigationRequested: (state: string | null): void => dispatch({
       type: ActionTypes.NAVIGATION_REQUESTED,

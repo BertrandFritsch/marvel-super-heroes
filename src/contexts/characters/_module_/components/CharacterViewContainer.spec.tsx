@@ -1,12 +1,12 @@
-import { mount } from "enzyme";
-import { List } from "immutable";
-import * as React from "react";
-import { Provider } from "react-redux";
-import { Store } from "redux";
-import { CharacterState } from "../reducers";
-import CharacterViewContainer from "./CharacterViewContainer";
+import { mount } from 'enzyme';
+import { List } from 'immutable';
+import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { CharacterState } from '../reducers';
+import CharacterViewContainer from './CharacterViewContainer';
 
-describe("CharacterViewContainer", () => {
+describe('CharacterViewContainer', () => {
   let store: Store<CharacterState>;
   let state: CharacterState;
 
@@ -23,11 +23,11 @@ describe("CharacterViewContainer", () => {
       dispatch: (action) => action,
       getState: () => state,
       subscribe: (listener) => () => { },
-      replaceReducer: (reducer) => { }
+      replaceReducer: () => { }
     });
   });
 
-  it("should render correctly", () => {
+  it('should render correctly', () => {
     const wrapper = mount(
       <Provider store={ store }>
         <CharacterViewContainer />
@@ -37,13 +37,13 @@ describe("CharacterViewContainer", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should render the tiles view", () => {
+  it('should render the tiles view', () => {
     const character = {
-      id: "id1",
-      name: "name1",
-      description: "desc 1",
-      thumbnail: "thumbnail1",
-      thumbnail_details: "thumbnail_details1",
+      id: 'id1',
+      name: 'name1',
+      description: 'desc 1',
+      thumbnail: 'thumbnail1',
+      thumbnail_details: 'thumbnail_details1',
       comics: {
         items: []
       },
@@ -67,7 +67,7 @@ describe("CharacterViewContainer", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should render the tiles view while loading", () => {
+  it('should render the tiles view while loading', () => {
     state.characters = {
       ...state.characters,
       loadingItems: true
@@ -82,20 +82,20 @@ describe("CharacterViewContainer", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should render the details view", () => {
+  it('should render the details view', () => {
     const character = {
-      id: "id1",
-      name: "name1",
-      description: "desc 1",
-      thumbnail: "thumbnail1",
-      thumbnail_details: "thumbnail_details1",
+      id: 'id1',
+      name: 'name1',
+      description: 'desc 1',
+      thumbnail: 'thumbnail1',
+      thumbnail_details: 'thumbnail_details1',
       comics: {
-        items: [ { name: "comics1" } ]
+        items: [ { name: 'comics1' } ]
       },
       series: {
-        items: [ { name: "series1" } ]
+        items: [ { name: 'series1' } ]
       },
-      urls: [ { type: "details", url: "http://..." } ]
+      urls: [ { type: 'details', url: 'http://...' } ]
     };
 
     state.characters = {

@@ -1,8 +1,8 @@
-import CharacterView from "./_module_/components/CharacterViewContainer";
-import reducers, { State } from "./_module_/reducers";
-import sagas from "./_module_/sagas";
+import CharacterView from './_module_/components/CharacterViewContainer';
+import reducers, { State } from './_module_/reducers';
+import sagas from './_module_/sagas';
 
-export type CharacterState = State;
+export type CharacterState = { characters: State };
 
 export default {
 
@@ -13,5 +13,5 @@ export default {
 
   // technical exports
   sagas,
-  reducers
+  reducers: { characters: reducers }
 };

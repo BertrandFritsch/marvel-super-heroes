@@ -26,6 +26,10 @@
       "check-type",
       "check-typecast",
       "check-preblock"
+    ],
+    "quotemark": [
+      true,
+      "single"
     ]
   },
   "rulesDirectory": []

@@ -1,16 +1,16 @@
-import { call, put, PutEffect, take } from "redux-saga/effects";
+import { call, put, PutEffect, take } from 'redux-saga/effects';
 
-import callAPI, { CallAPIResult, CallAPIResultType } from "../../../server/callAPI";
-import ActionTypes, { CharacterAction } from "./actionTypes";
-import { CharacterCollection } from "./reducers";
+import callAPI, { CallAPIResult, CallAPIResultType } from '../../../server/callAPI';
+import ActionTypes, { CharacterAction } from './actionTypes';
+import { CharacterCollection } from './reducers';
 
 // const publicKey = '...';
 // const privateKey = '...';
 // const ts = Math.trunc(Date.now() / 1000)
 // 'http://gateway.marvel.com/v1/public/characters?ts=' + ts + '&apikey=' + API_PUBLIC + '&hash=' + crypto.createHash('md5').update(ts + API_PRIVATE + API_PUBLIC).digest('hex')
 
-const MARVEL_URL = "http://gateway.marvel.com/v1/public";
-const URL_QUERY = "ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768";
+const MARVEL_URL = 'http://gateway.marvel.com/v1/public';
+const URL_QUERY = 'ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
 interface MarvelCharacter {
   data: {
@@ -41,10 +41,10 @@ const characterActionPut = (action: CharacterAction): PutEffect<CharacterAction>
  */
 export function* navigation() {
 
-  const CHARACTER_TILES_PAGE = "CHARACTER_TILES";
+  const CHARACTER_TILES_PAGE = 'CHARACTER_TILES';
 
   // Initialize the navigation history
-  yield call([ window.history, "replaceState" ], CHARACTER_TILES_PAGE, "");
+  yield call([ window.history, 'replaceState' ], CHARACTER_TILES_PAGE, '');
 
   for ( ; ; ) {
 
@@ -86,7 +86,7 @@ export function* loadCharacters() {
     // the API call failed
     yield characterActionPut({
       type: ActionTypes.ITEMS_LOADING_FAILED,
-      payload: callAPIResult.type === CallAPIResultType.SUCCESS ? new Error("The API call failed") : callAPIResult.error
+      payload: callAPIResult.type === CallAPIResultType.SUCCESS ? new Error('The API call failed') : callAPIResult.error
     });
   }
 }

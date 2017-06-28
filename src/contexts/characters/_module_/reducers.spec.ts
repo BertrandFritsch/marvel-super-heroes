@@ -1,14 +1,16 @@
-import { List } from "immutable";
-import ActionTypes from "./actionTypes";
-import reducer from "./reducers";
+import { List } from 'immutable';
+import ActionTypes from './actionTypes';
+import charactersReducer from './reducers';
 
-describe("character reducer", () => {
+const reducer = charactersReducer.characters;
+
+describe('character reducer', () => {
   const character = {
-    id: "id1",
-    name: "name1",
-    description: "desc 1",
-    thumbnail: "thumbnail1",
-    thumbnail_details: "thumbnail_details1",
+    id: 'id1',
+    name: 'name1',
+    description: 'desc 1',
+    thumbnail: 'thumbnail1',
+    thumbnail_details: 'thumbnail_details1',
     comics: {
       items: []
     },
@@ -18,11 +20,11 @@ describe("character reducer", () => {
     urls: []
   };
 
-  it("should throw an exception for malformed actions", () => {
+  it('should throw an exception for malformed actions', () => {
     expect(reducer).toThrow(TypeError);
   });
 
-  it("should return the provided state for unhandled actions", () => {
+  it('should return the provided state for unhandled actions', () => {
     const state = {
       items: List([]),
       selectedItem: null,
@@ -33,7 +35,7 @@ describe("character reducer", () => {
     expect(reducer(state, { type: ActionTypes.TILES_VIEW_LOADED })).toEqual(state);
   });
 
-  it("should get the default state", () => {
+  it('should get the default state', () => {
     const initialState = {
       items: List(),
       selectedItem: null,
@@ -53,7 +55,7 @@ describe("character reducer", () => {
     };
 
     const loadedItems = [
-      { ...character, id: "id2", name: "name2" }
+      { ...character, id: 'id2', name: 'name2' }
     ];
 
     const expectedState = { ...initialState, items: List(loadedItems), loadingItems: false };

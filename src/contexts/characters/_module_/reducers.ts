@@ -1,5 +1,5 @@
-import { List } from "immutable";
-import ActionTypes, { CharacterAction } from "./actionTypes";
+import { List } from 'immutable';
+import ActionTypes, { CharacterAction } from './actionTypes';
 
 export interface CharacterCollection {
   items: Array<{
@@ -39,11 +39,7 @@ const initialState: State = {
   loadingError: null         // contains the error if the items failed to load
 };
 
-export interface Dispatch<S> {
-  (action: CharacterAction): void;
-}
-
-export default (state: State | undefined, action: CharacterAction): State => {
+const reducer = (state: State | undefined, action: CharacterAction): State => {
   const locState = state || initialState;
 
   switch (action.type) {
@@ -67,3 +63,5 @@ export default (state: State | undefined, action: CharacterAction): State => {
       return locState;
   }
 };
+
+export default { characters: reducer };

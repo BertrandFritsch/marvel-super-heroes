@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import { createSelector } from "reselect";
-import ActionTypes from "../actionTypes";
-import { Character, CharacterState, Dispatch } from "../reducers";
-import CharacterTiles from "./CharacterTiles";
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import ActionTypes, { Dispatch } from '../actionTypes';
+import { Character, CharacterState } from '../reducers';
+import CharacterTiles from './CharacterTiles';
 
-const LOADING_MESSAGE = "Chargement des héros...";
+const LOADING_MESSAGE = 'Chargement des héros...';
 
 // use a memoized selector to re-compute the props only when the store has changed
 const getProps = createSelector(

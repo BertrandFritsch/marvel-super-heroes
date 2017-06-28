@@ -1,26 +1,26 @@
-import { delay } from "redux-saga";
-import { apply, call, race } from "redux-saga/effects";
-import callAPI, { callAPI_, CallAPIResultType } from "./callAPI";
+import { delay } from 'redux-saga';
+import { apply, call, race } from 'redux-saga/effects';
+import callAPI, { callAPI_, CallAPIResultType } from './callAPI';
 
-describe("callAPI", () => {
-  const URI = "https://server.com/api";
+describe('callAPI', () => {
+  const URI = 'https://server.com/api';
 
   const RETRY_DELAYS = [ 1000, 3000 ];
   const CALL_TIMEOUT = 15000;
 
   const defaultCallAPIOptions = {
     headers: {
-      Accept: "application/json"
+      Accept: 'application/json'
     },
-    method: "GET"
+    method: 'GET'
   };
 
-  describe("callAPI_", () => {
+  describe('callAPI_', () => {
 
-    it("should use the provided arguments", () => {
-      const URL = "https://server.com/api/profile";
+    it('should use the provided arguments', () => {
+      const URL = 'https://server.com/api/profile';
       const options = {
-        method: "POST",
+        method: 'POST',
         body: {}
       };
 
@@ -43,8 +43,8 @@ describe("callAPI", () => {
       expect(gen.next(body)).toEqual({ done: true, value: { type: CallAPIResultType.SUCCESS, body: {}, status: 200 } });
     });
 
-    it("should use the default options", () => {
-      const URL = "https://server.com/api/profile";
+    it('should use the default options', () => {
+      const URL = 'https://server.com/api/profile';
 
       const gen = callAPI_(URL);
 
@@ -65,21 +65,21 @@ describe("callAPI", () => {
       expect(gen.next(body)).toEqual({ done: true, value: { type: CallAPIResultType.SUCCESS, body: {}, status: 200 } });
     });
 
-    it("should get a 0 status in case of an exception during the API call", () => {
+    it('should get a 0 status in case of an exception during the API call', () => {
       const gen = callAPI_(URI);
 
       // call the API
       expect(gen.next().value).toEqual(call(fetch, URI, defaultCallAPIOptions));
 
-      const error = new Error("fetch exception...");
+      const error = new Error('fetch exception...');
 
       // get the JSON response
       expect(gen.throw && gen.throw(error)).toEqual({ done: true, value: { type: CallAPIResultType.ERROR, error } });
     });
   });
 
-  it("should send a request with the default options", () => {
-    const URL = "https://server.com/api/profile";
+  it('should send a request with the default options', () => {
+    const URL = 'https://server.com/api/profile';
 
     const gen = callAPI(URL);
 
@@ -90,14 +90,14 @@ describe("callAPI", () => {
     }));
 
     // get the response
-    expect(gen.next({ response: { type: CallAPIResultType.SUCCESS, status: 200, body: "data" } })).toEqual({
+    expect(gen.next({ response: { type: CallAPIResultType.SUCCESS, status: 200, body: 'data' } })).toEqual({
       done: true,
-      value: { type: CallAPIResultType.SUCCESS, status: 200, body: "data" }
+      value: { type: CallAPIResultType.SUCCESS, status: 200, body: 'data' }
     });
   });
 
-  it("should retry if the API call times out", () => {
-    const URL = "https://server.com/api/profile";
+  it('should retry if the API call times out', () => {
+    const URL = 'https://server.com/api/profile';
 
     const gen = callAPI(URL);
 
@@ -117,14 +117,14 @@ describe("callAPI", () => {
     }));
 
     // now, get the response
-    expect(gen.next({ response: { type: CallAPIResultType.SUCCESS, status: 200, body: "data" } })).toEqual({
+    expect(gen.next({ response: { type: CallAPIResultType.SUCCESS, status: 200, body: 'data' } })).toEqual({
       done: true,
-      value: { type: CallAPIResultType.SUCCESS, status: 200, body: "data" }
+      value: { type: CallAPIResultType.SUCCESS, status: 200, body: 'data' }
     });
   });
 
-  it("should fail if the API call times out three times", () => {
-    const URL = "https://server.com/api/profile";
+  it('should fail if the API call times out three times', () => {
+    const URL = 'https://server.com/api/profile';
 
     const gen = callAPI(URL);
 
@@ -155,12 +155,12 @@ describe("callAPI", () => {
     // should return an error
     expect(gen.next({ timeout: true })).toEqual({
       done: true,
-      value: { type: CallAPIResultType.ERROR, error: new Error("The API call timed out.") }
+      value: { type: CallAPIResultType.ERROR, error: new Error('The API call timed out.') }
     });
   });
 
-  it("should get 500 if the API call gets 500 three times ", () => {
-    const URL = "https://server.com/api/profile";
+  it('should get 500 if the API call gets 500 three times ', () => {
+    const URL = 'https://server.com/api/profile';
 
     const gen = callAPI(URL);
 

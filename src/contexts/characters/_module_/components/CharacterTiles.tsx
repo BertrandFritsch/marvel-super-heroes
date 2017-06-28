@@ -1,12 +1,12 @@
 // tslint:disable-next-line
 /// <reference path="../../../../../typings/react-stonecutter.d.ts" />
 
-import * as React from "react";
-import { CSSGrid, makeResponsive } from "react-stonecutter";
+import * as React from 'react';
+import { CSSGrid, makeResponsive } from 'react-stonecutter';
 
-import { Character } from "../reducers";
-import CharacterMessage from "./CharacterMessage";
-import CharacterTile from "./CharacterTile";
+import { Character } from '../reducers';
+import CharacterMessage from './CharacterMessage';
+import CharacterTile from './CharacterTile';
 
 const Grid = makeResponsive(CSSGrid);
 
@@ -20,7 +20,7 @@ interface Props {
   /**
    * The message to display to the user
    */
-  message: string;
+  message: string | null;
 
   /**
    * Called when the component has been loaded
@@ -38,7 +38,7 @@ interface Props {
  *
  * Use a pure component -- it doesn't re-render if neither its props or state has changed
  */
-export default class CharacterTiles extends React.PureComponent<Props, void> {
+export default class CharacterTiles extends React.PureComponent<Props> {
 
   componentDidMount() {
     this.props.onTilesViewLoaded();

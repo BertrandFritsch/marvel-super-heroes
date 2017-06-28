@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface Props {
 
@@ -21,25 +21,25 @@ interface Props {
 /**
  * The view
  */
-export default class CharacterView extends React.PureComponent<Props, void> {
+export default class CharacterView extends React.PureComponent<Props> {
 
   componentDidMount() {
-    window.addEventListener("popstate", this.onNavigationRequested);
+    window.addEventListener('popstate', this.onNavigationRequested);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("popstate", this.onNavigationRequested);
+    window.removeEventListener('popstate', this.onNavigationRequested);
   }
 
   onNavigationRequested = (e: PopStateEvent): void => this.props.onNavigationRequested(e.state);
 
   render() {
     return (
-      <div className="main-container">
+      <div className='main-container'>
         <nav>
-          <span className="marvel-logo">{ this.props.title }</span>
+          <span className='marvel-logo'>{ this.props.title }</span>
         </nav>
-        <section className="character-section">
+        <section className='character-section'>
           <this.props.component />
         </section>
       </div>
