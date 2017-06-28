@@ -7,9 +7,9 @@ A sample application to illustrate the implementation of a JavaScript single-pag
 - [React](https://facebook.github.io/react/) / [redux](http://redux.js.org/) application
 - [redux-saga](https://github.com/redux-saga/redux-saga) as the side effect manager.
 - [Sass](http://sass-lang.com/)
-- [Babel](https://babeljs.io/) to transpile the ES6 code
+- [TypeScript](https://www.typescriptlang.org/) for static types and ES6 code transpilation
 - [Jest](https://facebook.github.io/jest/) / [Enzyme](http://airbnb.io/enzyme/) for unit tests and code coverage
-- [Webpack 2](https://webpack.js.org/)
+- [Webpack 3](https://webpack.js.org/)
 
 It's an MVC application:
 
@@ -86,13 +86,7 @@ To run the unit tests:
 npm run test:unit
 ```
 
-To check the flow types:
-
-```bash
-npm run flow
-```
-
-To analyze the code with eslint:
+To analyze the code with tslint:
 
 ```bash
 npm run lint
