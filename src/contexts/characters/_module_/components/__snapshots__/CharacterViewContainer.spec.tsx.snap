@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharacterViewContainer should render correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CharacterView)>
+    <CharacterView
+      component={[Function]}
+      onNavigationRequested={[Function]}
+      title="Liste des super héros"
+    >
+      <div
+        className="main-container"
+      >
+        <nav>
+          <span
+            className="marvel-logo"
+          >
+            Liste des super héros
+          </span>
+        </nav>
+        <section
+          className="character-section"
+        >
+          <Connect(CharacterTiles)>
+            <CharacterTiles
+              items={Array []}
+              message={null}
+              onTileDetailsRequested={[Function]}
+              onTilesViewLoaded={[Function]}
+            >
+              <_class
+                columnWidth={250}
+                duration={800}
+                gutterHeight={10}
+                gutterWidth={10}
+                itemHeight={280}
+              >
+                <_class
+                  angleUnit="deg"
+                  columnWidth={250}
+                  columns={4}
+                  component="div"
+                  duration={800}
+                  easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
+                  enter={[Function]}
+                  entered={[Function]}
+                  exit={[Function]}
+                  gutterHeight={10}
+                  gutterWidth={10}
+                  itemHeight={280}
+                  layout={[Function]}
+                  lengthUnit="px"
+                >
+                  <ReactTransitionGroupPlus
+                    childFactory={[Function]}
+                    component="div"
+                    deferLeavingComponentRemoval={false}
+                    style={
+                      Object {
+                        "height": "-10px",
+                        "position": "relative",
+                        "width": "1030px",
+                      }
+                    }
+                    transitionMode="simultaneous"
+                  >
+                    <div
+                      style={
+                        Object {
+                          "height": "-10px",
+                          "position": "relative",
+                          "width": "1030px",
+                        }
+                      }
+                    />
+                  </ReactTransitionGroupPlus>
+                </_class>
+              </_class>
+            </CharacterTiles>
+          </Connect(CharacterTiles)>
+        </section>
+      </div>
+    </CharacterView>
+  </Connect(CharacterView)>
+</Provider>
+`;
+
+exports[`CharacterViewContainer should render the details view 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CharacterView)>
+    <CharacterView
+      component={[Function]}
+      onNavigationRequested={[Function]}
+      title="Fiche d'identité"
+    >
+      <div
+        className="main-container"
+      >
+        <nav>
+          <span
+            className="marvel-logo"
+          >
+            Fiche d'identité
+          </span>
+        </nav>
+        <section
+          className="character-section"
+        >
+          <Connect(CharacterDetails)>
+            <CharacterDetails
+              dispatch={[Function]}
+              item={
+                Object {
+                  "comics": Object {
+                    "items": Array [
+                      Object {
+                        "name": "comics1",
+                      },
+                    ],
+                  },
+                  "description": "desc 1",
+                  "id": "id1",
+                  "name": "name1",
+                  "series": Object {
+                    "items": Array [
+                      Object {
+                        "name": "series1",
+                      },
+                    ],
+                  },
+                  "thumbnail": "thumbnail1",
+                  "thumbnail_details": "thumbnail_details1",
+                  "urls": Array [
+                    Object {
+                      "type": "details",
+                      "url": "http://...",
+                    },
+                  ],
+                }
+              }
+            >
+              <div
+                className="character-details"
+              >
+                <img
+                  src="thumbnail_details1"
+                />
+                <div
+                  className="character-details-desc"
+                >
+                  <span
+                    className="character-details-name"
+                  >
+                    name1
+                  </span>
+                  <p
+                    className="character-details-description"
+                  >
+                    desc 1
+                  </p>
+                  <CharacterDetailsCollection
+                    items={
+                      Array [
+                        Object {
+                          "name": "comics1",
+                        },
+                      ]
+                    }
+                    name="Comics"
+                  >
+                    <div
+                      className="character-collection"
+                    >
+                      <span
+                        className="character-collection-name"
+                      >
+                        Comics
+                      </span>
+                      <div
+                        className="character-collection-items"
+                      >
+                        <span
+                          className="character-collection-item"
+                        >
+                          comics1
+                        </span>
+                      </div>
+                    </div>
+                  </CharacterDetailsCollection>
+                  <CharacterDetailsCollection
+                    items={
+                      Array [
+                        Object {
+                          "name": "series1",
+                        },
+                      ]
+                    }
+                    name="Series"
+                  >
+                    <div
+                      className="character-collection"
+                    >
+                      <span
+                        className="character-collection-name"
+                      >
+                        Series
+                      </span>
+                      <div
+                        className="character-collection-items"
+                      >
+                        <span
+                          className="character-collection-item"
+                        >
+                          series1
+                        </span>
+                      </div>
+                    </div>
+                  </CharacterDetailsCollection>
+                </div>
+              </div>
+            </CharacterDetails>
+          </Connect(CharacterDetails)>
+        </section>
+      </div>
+    </CharacterView>
+  </Connect(CharacterView)>
+</Provider>
+`;
+
+exports[`CharacterViewContainer should render the tiles view 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CharacterView)>
+    <CharacterView
+      component={[Function]}
+      onNavigationRequested={[Function]}
+      title="Liste des super héros"
+    >
+      <div
+        className="main-container"
+      >
+        <nav>
+          <span
+            className="marvel-logo"
+          >
+            Liste des super héros
+          </span>
+        </nav>
+        <section
+          className="character-section"
+        >
+          <Connect(CharacterTiles)>
+            <CharacterTiles
+              items={
+                Array [
+                  Object {
+                    "comics": Object {
+                      "items": Array [],
+                    },
+                    "description": "desc 1",
+                    "id": "id1",
+                    "name": "name1",
+                    "series": Object {
+                      "items": Array [],
+                    },
+                    "thumbnail": "thumbnail1",
+                    "thumbnail_details": "thumbnail_details1",
+                    "urls": Array [],
+                  },
+                ]
+              }
+              message={null}
+              onTileDetailsRequested={[Function]}
+              onTilesViewLoaded={[Function]}
+            >
+              <_class
+                columnWidth={250}
+                duration={800}
+                gutterHeight={10}
+                gutterWidth={10}
+                itemHeight={280}
+              >
+                <_class
+                  angleUnit="deg"
+                  columnWidth={250}
+                  columns={4}
+                  component="div"
+                  duration={800}
+                  easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
+                  enter={[Function]}
+                  entered={[Function]}
+                  exit={[Function]}
+                  gutterHeight={10}
+                  gutterWidth={10}
+                  itemHeight={280}
+                  layout={[Function]}
+                  lengthUnit="px"
+                >
+                  <ReactTransitionGroupPlus
+                    childFactory={[Function]}
+                    component="div"
+                    deferLeavingComponentRemoval={false}
+                    style={
+                      Object {
+                        "height": "280px",
+                        "position": "relative",
+                        "width": "1030px",
+                      }
+                    }
+                    transitionMode="simultaneous"
+                  >
+                    <div
+                      style={
+                        Object {
+                          "height": "280px",
+                          "position": "relative",
+                          "width": "1030px",
+                        }
+                      }
+                    >
+                      <_class
+                        angleUnit="deg"
+                        columnWidth={250}
+                        columns={4}
+                        component="div"
+                        duration={800}
+                        easing="cubic-bezier(0.215, 0.61, 0.355, 1)"
+                        enter={[Function]}
+                        entered={[Function]}
+                        exit={[Function]}
+                        gridProps={
+                          Object {
+                            "angleUnit": "deg",
+                            "children": Array [
+                              <div>
+                                <CharacterTile
+                                      item={
+                                            Object {
+                                                  "comics": Object {
+                                                    "items": Array [],
+                                                  },
+                                                  "description": "desc 1",
+                                                  "id": "id1",
+                                                  "name": "name1",
+                                                  "series": Object {
+                                                    "items": Array [],
+                                                  },
+                                                  "thumbnail": "thumbnail1",
+                                                  "thumbnail_details": "thumbnail_details1",
+                                                  "urls": Array [],
+                                                }
+                                      }
+                                      onTileDetailsRequested={[Function]}
+                                />
+                          </div>,
+                            ],
+                            "columnWidth": 250,
+                            "columns": 4,
+                            "component": "div",
+                            "duration": 800,
+                            "easing": "cubic-bezier(0.215, 0.61, 0.355, 1)",
+                            "enter": [Function],
+                            "entered": [Function],
+                            "exit": [Function],
+                            "gutterHeight": 10,
+                            "gutterWidth": 10,
+                            "itemHeight": 280,
+                            "layout": [Function],
+                            "lengthUnit": "px",
+                          }
+                        }
+                        gridState={
+                          Object {
+                            "gridHeight": 280,
+                            "gridWidth": 1030,
+                            "positions": Array [
+                              Array [
+                                0,
+                                0,
+                              ],
+                            ],
+                          }
+                        }
+                        gutterHeight={10}
+                        gutterWidth={10}
+                        itemHeight={280}
+                        layout={[Function]}
+                        lengthUnit="px"
+                        position={
+                          Array [
+                            0,
+                            0,
+                          ]
+                        }
+                        transition="opacity 800ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 800ms cubic-bezier(0.215, 0.61, 0.355, 1)"
+                      >
+                        <div
+                          style={
+                            Object {
+                              "WebkitTransform": "translateX(0px) translateY(0px) scale(1)",
+                              "WebkitTransition": "opacity 800ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 800ms cubic-bezier(0.215, 0.61, 0.355, 1)",
+                              "left": 0,
+                              "opacity": 1,
+                              "position": "absolute",
+                              "top": 0,
+                              "transform": "translateX(0px) translateY(0px) scale(1)",
+                              "transition": "opacity 800ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 800ms cubic-bezier(0.215, 0.61, 0.355, 1)",
+                              "zIndex": 2,
+                            }
+                          }
+                        >
+                          <CharacterTile
+                            item={
+                              Object {
+                                "comics": Object {
+                                  "items": Array [],
+                                },
+                                "description": "desc 1",
+                                "id": "id1",
+                                "name": "name1",
+                                "series": Object {
+                                  "items": Array [],
+                                },
+                                "thumbnail": "thumbnail1",
+                                "thumbnail_details": "thumbnail_details1",
+                                "urls": Array [],
+                              }
+                            }
+                            onTileDetailsRequested={[Function]}
+                          >
+                            <div
+                              className="character-tile"
+                            >
+                              <a
+                                href="#"
+                                onClick={[Function]}
+                              >
+                                <img
+                                  src="thumbnail1"
+                                />
+                              </a>
+                              <span
+                                className="character-tile-name"
+                              >
+                                name1
+                              </span>
+                              <div
+                                className="character-tile-links"
+                              />
+                            </div>
+                          </CharacterTile>
+                        </div>
+                      </_class>
+                    </div>
+                  </ReactTransitionGroupPlus>
+                </_class>
+              </_class>
+            </CharacterTiles>
+          </Connect(CharacterTiles)>
+        </section>
+      </div>
+    </CharacterView>
+  </Connect(CharacterView)>
+</Provider>
+`;
+
+exports[`CharacterViewContainer should render the tiles view while loading 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CharacterView)>
+    <CharacterView
+      component={[Function]}
+      onNavigationRequested={[Function]}
+      title="Liste des super héros"
+    >
+      <div
+        className="main-container"
+      >
+        <nav>
+          <span
+            className="marvel-logo"
+          >
+            Liste des super héros
+          </span>
+        </nav>
+        <section
+          className="character-section"
+        >
+          <Connect(CharacterTiles)>
+            <CharacterTiles
+              items={Array []}
+              message="Chargement des héros..."
+              onTileDetailsRequested={[Function]}
+              onTilesViewLoaded={[Function]}
+            >
+              <CharacterMessage
+                message="Chargement des héros..."
+              >
+                <p
+                  className="character-message"
+                >
+                  Chargement des héros...
+                </p>
+              </CharacterMessage>
+            </CharacterTiles>
+          </Connect(CharacterTiles)>
+        </section>
+      </div>
+    </CharacterView>
+  </Connect(CharacterView)>
+</Provider>
+`;
