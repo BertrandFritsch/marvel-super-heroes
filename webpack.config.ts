@@ -4,6 +4,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const productionEnv = process.env.NODE_ENV === 'production';
 const developmentEnv = !productionEnv;
+const publicPath = process.env.PUBLIC_PATH || '/';
 
 let config: webpack.Configuration = {};
 
@@ -69,7 +70,7 @@ config = {
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: 'bundle-[hash].js',
-    publicPath: '/'
+    publicPath
   },
 
   resolve: {
