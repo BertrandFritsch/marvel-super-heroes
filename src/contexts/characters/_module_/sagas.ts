@@ -9,7 +9,7 @@ import { CharacterCollection } from './reducers';
 // const ts = Math.trunc(Date.now() / 1000)
 // 'http://gateway.marvel.com/v1/public/characters?ts=' + ts + '&apikey=' + API_PUBLIC + '&hash=' + crypto.createHash('md5').update(ts + API_PRIVATE + API_PUBLIC).digest('hex')
 
-const MARVEL_URL = 'http://gateway.marvel.com/v1/public';
+const MARVEL_URL = 'https://gateway.marvel.com/v1/public';
 const URL_QUERY = 'ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
 interface MarvelCharacter {

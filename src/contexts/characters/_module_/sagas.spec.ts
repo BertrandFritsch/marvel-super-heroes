@@ -71,7 +71,7 @@ describe('characters sagas', () => {
       // notify about the loading of the items
       expect(gen.next().value).toEqual(put({ type: ActionTypes.ITEMS_LOADING }));
 
-      const URI = 'http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
+      const URI = 'https://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
       // call the API
       expect(gen.next().value).toEqual(call(callAPI, URI));
@@ -130,7 +130,7 @@ describe('characters sagas', () => {
       // notify about the loading of the items
       expect(gen.next().value).toEqual(put({ type: ActionTypes.ITEMS_LOADING }));
 
-      const URI = 'http://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
+      const URI = 'https://gateway.marvel.com/v1/public/characters?ts=1494860896&apikey=298bab46381a6daaaee19aa5c8cafea5&hash=94546204dccb6a0268849f0ba2aac768';
 
       // call the API
       expect(gen.next().value).toEqual(call(callAPI, URI));
