@@ -1,5 +1,4 @@
-import { delay } from 'redux-saga';
-import { apply, call, race } from 'redux-saga/effects';
+import { apply, call, delay, race } from 'redux-saga/effects';
 import 'whatwg-fetch';
 
 // number of times the API call will be retried in case of failure and delays between each call
@@ -43,7 +42,7 @@ export function* callAPI_<T>(url: string, opts: RequestInit = defaultCallAPIOpti
     });
 
     // assume the response is JSON-formatted
-    const body: T = yield apply(response, response.json);
+    const body: T = yield apply(response, response.json, []);
     return {
       type: CallAPIResultType.SUCCESS,
       status: response.status,
