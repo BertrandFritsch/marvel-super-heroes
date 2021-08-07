@@ -54,7 +54,7 @@
     "react-redux": "^5.0.5",
     "react-stonecutter": "^0.3.5",
     "redux": "^3.7.1",
-    "redux-saga": "^0.15.4",
+    "redux-saga": "^0.16.2",
     "reselect": "^3.0.0",
     "whatwg-fetch": "^2.0.3"
   },
