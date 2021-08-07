@@ -52,7 +52,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "react-stonecutter": "^0.3.5",
+    "react-stonecutter": "^0.3.10",
     "redux": "^3.7.1",
     "redux-saga": "^0.15.4",
     "reselect": "^3.0.0",
