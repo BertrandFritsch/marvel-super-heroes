@@ -11,7 +11,9 @@
     "build:watch": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test:unit:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:unit": "cross-env NODE_ENV=test jest --coverage"
+    "test:unit": "cross-env NODE_ENV=test jest --coverage",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "@types/enzyme": "^2.8.1",
@@ -49,14 +51,15 @@
   },
   "dependencies": {
     "immutable": "^3.8.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-redux": "^5.0.5",
     "react-stonecutter": "^0.3.5",
     "redux": "^3.7.1",
     "redux-saga": "^0.15.4",
     "reselect": "^3.0.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "@snyk/protect": "latest"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -89,5 +92,6 @@
       }
     },
     "mapCoverage": true
-  }
+  },
+  "snyk": true
 }
